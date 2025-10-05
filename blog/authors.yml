@@ -1,0 +1,13 @@
+admin:
+  name: 管理员
+  title: HevSpecu 团队
+  url: https://github.com/HevSpecu
+  image_url: https://github.com/github.png
+  email: admin@hevspecu.com
+
+excnies:
+  name: Excnies
+  title: 开发者
+  url: https://github.com/excnies
+  image_url: https://github.com/github.png
+

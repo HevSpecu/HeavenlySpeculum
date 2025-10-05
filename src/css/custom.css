@@ -1,0 +1,684 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   自定义导航栏样式
+   ============================================ */
+
+/* 隐藏语言选择器文字，只保留图标 */
+.navbar__item.dropdown > a.navbar__link {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-size: 0;
+  line-height: 0;
+}
+
+.navbar__item.dropdown > a.navbar__link::after {
+  display: none;
+}
+
+.navbar__item.dropdown > a.navbar__link .iconLanguage_nlXk {
+  margin: 0;
+  font-size: 1.25rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.navbar__item.dropdown > a.navbar__link svg {
+  display: inline-block;
+}
+
+/* 隐藏导航栏中的"天空之镜"链接 */
+.navbar__link[href="/heavenly-speculum"],
+.navbar__link[href*="heavenly-speculum"],
+.navbar__item > a[href="/heavenly-speculum"],
+.navbar__item > a[href*="heavenly-speculum"] {
+  display: none !important;
+}
+
+/* 移除主页所有链接和按钮的下划线 */
+.hero-container a,
+.hero-container a:hover,
+.hero-container a:active,
+.hero-container a:focus,
+.hero-container a:visited,
+.hero-container .cta-button,
+.hero-container .cta-button:hover,
+.hero-container .cta-button:active,
+.hero-container .cta-button:focus {
+  text-decoration: none !important;
+}
+
+/* ============================================
+   Fumadocs CSS 变量定义
+   ============================================ */
+
+:root {
+  /* 颜色变量 - 亮色模式 */
+  --color-fd-background: hsl(0, 0%, 96%);
+  --color-fd-foreground: hsl(0, 0%, 3.9%);
+  --color-fd-muted: hsl(0, 0%, 96.1%);
+  --color-fd-muted-foreground: hsl(0, 0%, 45.1%);
+  --color-fd-popover: hsl(0, 0%, 98%);
+  --color-fd-popover-foreground: hsl(0, 0%, 15.1%);
+  --color-fd-card: hsl(0, 0%, 94.7%);
+  --color-fd-card-foreground: hsl(0, 0%, 3.9%);
+  --color-fd-border: hsla(0, 0%, 80%, 50%);
+  --color-fd-primary: hsl(0, 0%, 9%);
+  --color-fd-primary-foreground: hsl(0, 0%, 98%);
+  --color-fd-secondary: hsl(0, 0%, 93.1%);
+  --color-fd-secondary-foreground: hsl(0, 0%, 9%);
+  --color-fd-accent: hsla(0, 0%, 82%, 50%);
+  --color-fd-accent-foreground: hsl(0, 0%, 9%);
+  --color-fd-ring: hsl(0, 0%, 63.9%);
+
+  /* 特殊颜色 */
+  --color-fd-info: oklch(62.3% 0.214 259.815);
+  --color-fd-warning: oklch(76.9% 0.188 70.08);
+  --color-fd-error: oklch(63.7% 0.237 25.331);
+  --color-fd-success: oklch(72.3% 0.219 149.579);
+
+  /* 圆角半径 */
+  --radius: 0.5rem;
+
+  /* 布局变量 */
+  --fd-sidebar-width: 260px;
+  --fd-toc-width: 240px;
+  --fd-nav-height: 64px;
+}
+
+[data-theme='dark'] {
+  /* 颜色变量 - 暗色模式 */
+  --color-fd-background: hsl(0, 0%, 7.04%);
+  --color-fd-foreground: hsl(0, 0%, 92%);
+  --color-fd-muted: hsl(0, 0%, 12.9%);
+  --color-fd-muted-foreground: hsla(0, 0%, 70%, 0.8);
+  --color-fd-popover: hsl(0, 0%, 11.6%);
+  --color-fd-popover-foreground: hsl(0, 0%, 86.9%);
+  --color-fd-card: hsl(0, 0%, 9.8%);
+  --color-fd-card-foreground: hsl(0, 0%, 98%);
+  --color-fd-border: hsla(0, 0%, 40%, 20%);
+  --color-fd-primary: hsl(0, 0%, 98%);
+  --color-fd-primary-foreground: hsl(0, 0%, 9%);
+  --color-fd-secondary: hsl(0, 0%, 12.9%);
+  --color-fd-secondary-foreground: hsl(0, 0%, 92%);
+  --color-fd-accent: hsla(0, 0%, 40.9%, 30%);
+  --color-fd-accent-foreground: hsl(0, 0%, 90%);
+  --color-fd-ring: hsl(0, 0%, 54.9%);
+}
+
+/* ============================================
+   全局基础样式
+   ============================================ */
+
+* {
+  @apply border-fd-border;
+}
+
+/* 隐藏语言切换的文字，只保留图标 */
+.navbar__item--locale-dropdown .navbar__link {
+  font-size: 0 !important;
+  padding: 0.5rem 0.75rem !important;
+}
+
+.navbar__item--locale-dropdown .navbar__link svg {
+  font-size: 1.25rem !important;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.navbar__item.dropdown .navbar__link::after {
+  content: none !important;
+}
+
+/* 确保下拉箭头也被隐藏 */
+.navbar__item--locale-dropdown .dropdown__toggle::after {
+  display: none !important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-fd-background text-fd-foreground;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   导航栏样式覆盖
+   ============================================ */
+
+.navbar {
+  @apply bg-fd-background border-b border-fd-border shadow-none;
+  height: var(--fd-nav-height);
+  padding: 0;
+}
+
+.navbar__inner {
+  @apply px-6;
+}
+
+.navbar__title {
+  @apply text-fd-foreground font-semibold text-lg;
+}
+
+.navbar__link {
+  @apply text-fd-muted-foreground hover:text-fd-foreground transition-colors;
+}
+
+.navbar__link--active {
+  @apply text-fd-foreground font-medium;
+}
+
+.navbar__item {
+  @apply text-sm;
+}
+
+/* 导航栏按钮 */
+.navbar__toggle,
+.clean-btn {
+  @apply hover:bg-fd-accent rounded-md transition-colors;
+}
+
+/* ============================================
+   侧边栏样式覆盖
+   ============================================ */
+
+.sidebar {
+  @apply bg-fd-background border-r border-fd-border;
+  width: var(--fd-sidebar-width);
+}
+
+[data-theme='dark'] .sidebar {
+  --color-fd-muted: hsl(0, 0%, 16%);
+  --color-fd-secondary: hsl(0, 0%, 18%);
+  --color-fd-muted-foreground: hsl(0, 0%, 72%);
+}
+
+.menu {
+  @apply bg-transparent;
+  padding: 1rem 0.75rem;
+}
+
+.menu__list {
+  @apply space-y-1;
+}
+
+.menu__link {
+  @apply text-fd-muted-foreground hover:text-fd-foreground hover:bg-fd-accent rounded-md px-3 py-2 text-sm transition-all;
+  border-radius: calc(var(--radius) - 2px);
+}
+
+.menu__link--active {
+  @apply bg-fd-secondary text-fd-foreground font-medium;
+}
+
+.menu__link--sublist {
+  @apply text-fd-muted-foreground;
+}
+
+.menu__caret::before {
+  @apply bg-fd-muted-foreground;
+}
+
+/* 菜单列表层级 */
+.menu__list-item--collapsed .menu__list {
+  @apply hidden;
+}
+
+.theme-doc-sidebar-item-category > .menu__list-item-collapsible > .menu__link {
+  @apply font-medium;
+}
+
+/* ============================================
+   文档内容区域样式
+   ============================================ */
+
+.main-wrapper {
+  @apply bg-fd-background;
+}
+
+.docMainContainer {
+  @apply bg-fd-background;
+}
+
+article {
+  @apply text-fd-foreground;
+}
+
+.markdown {
+  --ifm-heading-color: var(--color-fd-foreground);
+  --ifm-link-color: var(--color-fd-primary);
+}
+
+.markdown > h1,
+.markdown > h2,
+.markdown > h3,
+.markdown > h4,
+.markdown > h5,
+.markdown > h6 {
+  @apply text-fd-foreground font-bold;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.markdown > h1 {
+  @apply text-4xl;
+}
+
+.markdown > h2 {
+  @apply text-3xl;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-fd-border);
+}
+
+.markdown > h3 {
+  @apply text-2xl;
+}
+
+.markdown > h4 {
+  @apply text-xl;
+}
+
+.markdown > p {
+  @apply text-fd-foreground leading-7;
+  margin: 1rem 0;
+}
+
+.markdown > ul,
+.markdown > ol {
+  @apply text-fd-foreground;
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.markdown > ul > li,
+.markdown > ol > li {
+  margin: 0.5rem 0;
+}
+
+.markdown a {
+  @apply text-fd-primary hover:underline;
+}
+
+.markdown strong {
+  @apply font-semibold text-fd-foreground;
+}
+
+.markdown code {
+  @apply bg-fd-muted text-fd-foreground px-1.5 py-0.5 rounded text-sm;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+}
+
+/* ============================================
+   代码块样式
+   ============================================ */
+
+.theme-code-block {
+  @apply bg-fd-card rounded-lg border border-fd-border shadow-sm my-4;
+  border-radius: var(--radius);
+}
+
+.prism-code {
+  @apply bg-fd-card text-fd-foreground p-4;
+  border-radius: var(--radius);
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+[data-theme='dark'] .prism-code {
+  @apply bg-fd-muted;
+}
+
+.token-line {
+  @apply leading-relaxed;
+}
+
+/* 代码块标题 */
+.theme-code-block-title {
+  @apply bg-fd-muted text-fd-foreground px-4 py-2 text-sm font-medium border-b border-fd-border;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+/* 复制按钮 */
+.theme-code-block .clean-btn {
+  @apply bg-fd-secondary hover:bg-fd-accent text-fd-foreground;
+  border-radius: calc(var(--radius) - 2px);
+}
+
+/* ============================================
+   提示框 (Admonitions) 样式
+   ============================================ */
+
+.admonition {
+  @apply border-l-4 rounded-md p-4 my-4 bg-fd-card;
+  border-radius: calc(var(--radius) - 2px);
+}
+
+.admonition-heading {
+  @apply flex items-center font-semibold mb-2;
+}
+
+.admonition-heading h5 {
+  @apply m-0 text-base;
+}
+
+.admonition-content {
+  @apply text-fd-foreground;
+}
+
+.admonition-note {
+  @apply border-l-fd-info bg-fd-card;
+}
+
+.admonition-note .admonition-heading {
+  @apply text-fd-info;
+}
+
+.admonition-tip {
+  @apply border-l-fd-success;
+}
+
+.admonition-tip .admonition-heading {
+  @apply text-fd-success;
+}
+
+.admonition-info {
+  @apply border-l-fd-info;
+}
+
+.admonition-info .admonition-heading {
+  @apply text-fd-info;
+}
+
+.admonition-warning,
+.admonition-caution {
+  @apply border-l-fd-warning;
+}
+
+.admonition-warning .admonition-heading,
+.admonition-caution .admonition-heading {
+  @apply text-fd-warning;
+}
+
+.admonition-danger {
+  @apply border-l-fd-error;
+}
+
+.admonition-danger .admonition-heading {
+  @apply text-fd-error;
+}
+
+/* ============================================
+   目录 (TOC) 样式
+   ============================================ */
+
+.table-of-contents {
+  @apply text-sm;
+}
+
+.table-of-contents__link {
+  @apply text-fd-muted-foreground hover:text-fd-foreground transition-colors py-1 block;
+}
+
+.table-of-contents__link--active {
+  @apply text-fd-primary font-medium;
+}
+
+.table-of-contents__link code {
+  @apply bg-transparent p-0;
+}
+
+/* ============================================
+   页脚样式
+   ============================================ */
+
+.footer {
+  @apply bg-fd-card border-t border-fd-border text-fd-muted-foreground;
+}
+
+.footer__title {
+  @apply text-fd-foreground font-semibold;
+}
+
+.footer__link-item {
+  @apply text-fd-muted-foreground hover:text-fd-foreground transition-colors;
+}
+
+.footer__copyright {
+  @apply text-fd-muted-foreground text-sm;
+}
+
+/* ============================================
+   面包屑导航
+   ============================================ */
+
+.breadcrumbs {
+  @apply text-sm text-fd-muted-foreground mb-4;
+}
+
+.breadcrumbs__link {
+  @apply hover:text-fd-foreground transition-colors;
+}
+
+.breadcrumbs__item--active {
+  @apply text-fd-foreground;
+}
+
+/* ============================================
+   分页导航
+   ============================================ */
+
+.pagination-nav__link {
+  @apply border border-fd-border rounded-lg hover:border-fd-primary hover:bg-fd-accent transition-all;
+  border-radius: var(--radius);
+}
+
+.pagination-nav__label {
+  @apply text-fd-muted-foreground text-sm;
+}
+
+.pagination-nav__sublabel {
+  @apply text-fd-foreground font-medium;
+}
+
+/* ============================================
+   搜索样式
+   ============================================ */
+
+.navbar__search-input {
+  @apply bg-fd-muted border border-fd-border text-fd-foreground rounded-md;
+  border-radius: calc(var(--radius) - 2px);
+}
+
+.navbar__search-input:focus {
+  @apply border-fd-ring outline-none;
+}
+
+/* ============================================
+   标签页 (Tabs) 样式
+   ============================================ */
+
+.tabs {
+  @apply border-b border-fd-border;
+}
+
+.tabs__item {
+  @apply text-fd-muted-foreground hover:text-fd-foreground border-b-2 border-transparent px-4 py-2 transition-colors;
+}
+
+.tabs__item--active {
+  @apply text-fd-primary border-fd-primary font-medium;
+}
+
+/* ============================================
+   卡片样式
+   ============================================ */
+
+.card {
+  @apply bg-fd-card border border-fd-border rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow;
+  border-radius: var(--radius);
+}
+
+.card__header {
+  @apply text-fd-foreground font-semibold text-lg mb-2;
+}
+
+.card__body {
+  @apply text-fd-muted-foreground;
+}
+
+/* ============================================
+   滚动条样式
+   ============================================ */
+
+.fd-scroll-container::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.fd-scroll-container::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: var(--color-fd-border);
+}
+
+.fd-scroll-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.fd-scroll-container::-webkit-scrollbar-corner {
+  display: none;
+}
+
+/* ============================================
+   响应式样式调整
+   ============================================ */
+
+@media (max-width: 996px) {
+  .navbar__inner {
+    @apply px-4;
+  }
+
+  .sidebar {
+    width: 280px;
+  }
+}
+
+/* ============================================
+   Prism 语法高亮主题调整
+   ============================================ */
+
+/* 亮色模式代码高亮 */
+:root {
+  --prism-color: var(--color-fd-foreground);
+  --prism-background-color: var(--color-fd-card);
+}
+
+/* 暗色模式代码高亮 */
+[data-theme='dark'] {
+  --prism-color: var(--color-fd-foreground);
+  --prism-background-color: var(--color-fd-muted);
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  @apply text-fd-muted-foreground;
+}
+
+.token.punctuation {
+  @apply text-fd-foreground;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #d73a49;
+}
+
+[data-theme='dark'] .token.property,
+[data-theme='dark'] .token.tag,
+[data-theme='dark'] .token.boolean,
+[data-theme='dark'] .token.number,
+[data-theme='dark'] .token.constant,
+[data-theme='dark'] .token.symbol,
+[data-theme='dark'] .token.deleted {
+  color: #f97583;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #22863a;
+}
+
+[data-theme='dark'] .token.selector,
+[data-theme='dark'] .token.attr-name,
+[data-theme='dark'] .token.string,
+[data-theme='dark'] .token.char,
+[data-theme='dark'] .token.builtin,
+[data-theme='dark'] .token.inserted {
+  color: #85e89d;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.token.variable {
+  color: #6f42c1;
+}
+
+[data-theme='dark'] .token.operator,
+[data-theme='dark'] .token.entity,
+[data-theme='dark'] .token.url,
+[data-theme='dark'] .token.variable {
+  color: #b392f0;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+  color: #005cc5;
+}
+
+[data-theme='dark'] .token.atrule,
+[data-theme='dark'] .token.attr-value,
+[data-theme='dark'] .token.function,
+[data-theme='dark'] .token.class-name {
+  color: #79b8ff;
+}
+
+.token.keyword {
+  color: #d73a49;
+}
+
+[data-theme='dark'] .token.keyword {
+  color: #f97583;
+}
+
+/* ============================================
+   自定义工具类
+   ============================================ */
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
