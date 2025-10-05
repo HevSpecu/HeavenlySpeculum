@@ -155,13 +155,22 @@ body {
    ============================================ */
 
 .navbar {
-  @apply bg-fd-background border-b border-fd-border shadow-none;
+  @apply border-b border-fd-border shadow-none;
+  background-color: hsla(0, 0%, 90%, 0.7);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
   height: var(--fd-nav-height);
   padding: 0;
 }
 
+[data-theme='dark'] .navbar {
+  background-color: hsla(0, 0%, 7.04%, 0.7);
+}
+
 .navbar__inner {
   @apply px-6;
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
 }
 
 .navbar__title {
