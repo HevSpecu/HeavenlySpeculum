@@ -41,9 +41,6 @@
     - label: GitHub
       link: https://github.com/HevSpecu/Aiamgine
       style: secondary
-    - label: 文档
-      link: /docs/aiamgine
-      style: secondary
 
 - id: sdnu-chrono-sync
   title: 时序同笺
