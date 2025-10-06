@@ -115,19 +115,26 @@ function SVGTrack({
     const newPoints: PathPoint[] = [];
     const links = containerRef.current.querySelectorAll<HTMLAnchorElement>('a[data-level]');
     
-    links.forEach((link) => {
+    links.forEach((link, index) => {
       const level = parseInt(link.getAttribute('data-level') || '2');
       const id = link.getAttribute('href')?.substring(1) || '';
       
-      // 计算链接的中心点
+      // 计算链接的位置
       const rect = link.getBoundingClientRect();
       const containerRect = containerRef.current!.getBoundingClientRect();
       
-      const y = link.offsetTop + (rect.height / 2);
+      // 使用链接顶部位置，加上一点padding使其对齐文字中心偏上
+      const y = link.offsetTop + 8; // 8px 约为文字垂直居中的位置
       // SVG 路径的 x 坐标：h2 在 4px，h3 在 20px（缩进 16px）
       const x = level === 2 ? 4 : 20;
       
       newPoints.push({ x, y, level, id });
+      
+      // 如果是最后一个元素，添加底部点以确保路径足够长
+      if (index === links.length - 1) {
+        const bottomY = link.offsetTop + rect.height - 8;
+        newPoints.push({ x, y: bottomY, level, id: `${id}-end` });
+      }
     });
 
     setPoints(newPoints);
@@ -136,9 +143,9 @@ function SVGTrack({
       const d = generatePathD(newPoints);
       setPathD(d);
       
-      // 设置 SVG 高度为最后一个点的 y 坐标 + 一些余量
+      // 设置 SVG 高度为最后一个点的 y 坐标 + 充足的余量
       const maxY = Math.max(...newPoints.map(p => p.y));
-      setSvgHeight(maxY + 50);
+      setSvgHeight(maxY + 100); // 增加余量确保路径完整显示
     }
   }, [containerRef, toc]);
 
@@ -176,26 +183,31 @@ function SVGTrack({
       return;
     }
     
-    // 计算从起点到激活点的路径长度
-    let lengthToActive = 0;
+    // 计算从起点到激活点起始位置的路径长度
+    let lengthToActiveStart = 0;
     for (let i = 1; i <= activeIndex; i++) {
       const curr = points[i];
       const prev = points[i - 1];
       const dx = curr.x - prev.x;
       const dy = curr.y - prev.y;
-      lengthToActive += Math.sqrt(dx * dx + dy * dy);
+      lengthToActiveStart += Math.sqrt(dx * dx + dy * dy);
     }
     
     // 获取当前激活链接的高度，用于指示器的长度
     const activeLink = containerRef.current?.querySelector<HTMLAnchorElement>(
       `a[href="#${activeId}"]`
     );
-    const indicatorLength = activeLink ? activeLink.getBoundingClientRect().height : 20;
+    const linkHeight = activeLink ? activeLink.getBoundingClientRect().height : 24;
     
-    // 设置 stroke-dasharray：显示从起点到激活点的路径，加上指示器的长度
+    // 指示器应该覆盖链接的高度（减去上下padding）
+    const indicatorLength = linkHeight - 16;
+    
+    // 设置 stroke-dasharray 和 offset：
+    // - dasharray: 只显示 indicatorLength 长度的实线
+    // - offset: 负值，让实线段显示在正确的位置（从 lengthToActiveStart 开始）
     activePathRef.current.style.opacity = '1';
-    activePathRef.current.style.strokeDasharray = `${lengthToActive + indicatorLength} ${totalLength}`;
-    activePathRef.current.style.strokeDashoffset = '0';
+    activePathRef.current.style.strokeDasharray = `${indicatorLength} ${totalLength}`;
+    activePathRef.current.style.strokeDashoffset = `-${lengthToActiveStart}`;
     
   }, [activeId, pathD, points, containerRef]);
 
