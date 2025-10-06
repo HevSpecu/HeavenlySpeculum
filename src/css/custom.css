@@ -502,7 +502,7 @@ article {
 }
 
 .breadcrumbs__link {
-  @apply hover:text-fd-foreground transition-colors;
+  @apply hover:text-fd-foreground transition-colors inline-flex items-center;
 }
 
 .breadcrumbs__item--active {
