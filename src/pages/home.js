@@ -83,8 +83,8 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`主页 - ${siteConfig.title}`}
-      description="使用 Fumadocs 设计风格的 Docusaurus 文档站点">
+      title={`主页`}
+      description="天空之镜 HevSpecu - 提供GitHub加速镜像、DockerHub加速镜像、高速图床服务等优质服务">
       <HomepageHeader />
       <FeatureSection />
     </Layout>

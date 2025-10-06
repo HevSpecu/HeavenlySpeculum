@@ -113,8 +113,8 @@ export default function Home() {
 
   return (
     <Layout
-      title={`${siteConfig.title} - 天空之镜`}
-      description="HevSpecu (天空之镜) - 专注于科技创新与美学设计的开源组织">
+      title={siteConfig.title}
+      description="天空之镜 HevSpecu - 提供GitHub加速镜像、DockerHub加速镜像、高速图床服务Gastigado、智能图片管理工具Aiamgine、时序同笺课表管理等优质服务，为开发者提供高效便捷的技术解决方案。">
 
       {/* 3D Background */}
       <Background />
