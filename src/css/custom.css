@@ -333,14 +333,16 @@ article {
 .theme-code-block {
   @apply bg-fd-card rounded-lg border border-fd-border shadow-sm my-4;
   border-radius: var(--radius);
+  overflow: hidden;
 }
 
 .prism-code {
-  @apply bg-fd-card text-fd-foreground p-4;
+  @apply bg-fd-card text-fd-foreground;
   border-radius: var(--radius);
   font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
   font-size: 0.875rem;
   line-height: 1.7;
+  margin: 0 !important;
 }
 
 [data-theme='dark'] .prism-code {
@@ -351,16 +353,41 @@ article {
   @apply leading-relaxed;
 }
 
-/* 代码块标题 */
+/* 代码块标题 - 隐藏旧的默认标题 */
 .theme-code-block-title {
-  @apply bg-fd-muted text-fd-foreground px-4 py-2 text-sm font-medium border-b border-fd-border;
-  border-radius: var(--radius) var(--radius) 0 0;
+  display: none !important;
 }
 
 /* 复制按钮 */
 .theme-code-block .clean-btn {
   @apply bg-fd-secondary hover:bg-fd-accent text-fd-foreground;
   border-radius: calc(var(--radius) - 2px);
+}
+
+/* 自定义代码块容器样式 */
+.theme-code-block pre {
+  margin: 0 !important;
+  border-radius: 0 !important;
+  border-bottom-left-radius: var(--radius) !important;
+  border-bottom-right-radius: var(--radius) !important;
+}
+
+/* Thin scrollbar for code blocks */
+.thin-scrollbar::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+.thin-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-fd-border rounded;
+}
+
+.thin-scrollbar::-webkit-scrollbar-thumb:hover {
+  @apply bg-fd-ring;
+}
+
+.thin-scrollbar::-webkit-scrollbar-track {
+  @apply bg-transparent;
 }
 
 /* ============================================

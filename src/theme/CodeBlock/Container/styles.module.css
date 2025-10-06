@@ -1,0 +1,14 @@
+.codeBlockContainer {
+  @apply rounded-lg overflow-hidden my-4;
+  @apply border border-slate-200 dark:border-slate-700;
+  @apply shadow-sm;
+  background-color: transparent;
+}
+
+.codeBlockContainer pre {
+  margin-bottom: 0;
+  border-radius: 0;
+  border-bottom-left-radius: var(--ifm-pre-border-radius);
+  border-bottom-right-radius: var(--ifm-pre-border-radius);
+}
+

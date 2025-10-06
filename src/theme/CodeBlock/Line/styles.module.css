@@ -1,0 +1,22 @@
+.codeLine {
+  counter-increment: line-number;
+  display: table-row;
+}
+
+.codeLineNumber {
+  display: table-cell;
+  text-align: right;
+  padding-right: 1rem;
+  user-select: none;
+  opacity: 0.4;
+}
+
+.codeLineNumber::before {
+  content: counter(line-number);
+}
+
+.codeLineContent {
+  display: table-cell;
+  width: 100%;
+}
+

@@ -1,0 +1,23 @@
+.wordWrapButton {
+  @apply relative flex items-center justify-center;
+  @apply w-8 h-8 rounded;
+  @apply bg-transparent hover:bg-slate-200 dark:hover:bg-slate-700;
+  @apply text-slate-600 dark:text-slate-400;
+  @apply transition-all duration-200;
+  @apply border-0 cursor-pointer;
+  padding: 0.25rem;
+}
+
+.wordWrapButton:focus {
+  @apply outline-none ring-2 ring-slate-400 dark:ring-slate-500;
+}
+
+.wordWrapButtonEnabled {
+  @apply bg-slate-200 dark:bg-slate-700;
+  @apply text-slate-700 dark:text-slate-300;
+}
+
+.wordWrapButtonIcon {
+  @apply w-5 h-5;
+}
+

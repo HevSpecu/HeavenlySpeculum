@@ -1,0 +1,48 @@
+.copyButton {
+  @apply relative flex items-center justify-center;
+  @apply w-8 h-8 rounded;
+  @apply bg-transparent hover:bg-slate-200 dark:hover:bg-slate-700;
+  @apply text-slate-600 dark:text-slate-400;
+  @apply transition-all duration-200;
+  @apply border-0 cursor-pointer;
+  padding: 0.25rem;
+}
+
+.copyButton:focus {
+  @apply outline-none ring-2 ring-slate-400 dark:ring-slate-500;
+}
+
+.copyButtonIcons {
+  @apply relative w-5 h-5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.copyButtonIcon,
+.copyButtonSuccessIcon {
+  @apply absolute w-full h-full;
+  @apply transition-all duration-200;
+}
+
+.copyButtonIcon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.copyButtonSuccessIcon {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.copyButtonCopied .copyButtonIcon {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.copyButtonCopied .copyButtonSuccessIcon {
+  opacity: 1;
+  transform: scale(1);
+  @apply text-green-500 dark:text-green-400;
+}
+

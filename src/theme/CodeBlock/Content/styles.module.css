@@ -1,0 +1,77 @@
+/* Code Block Header */
+.codeBlockHeader {
+  @apply flex items-center justify-between px-4 py-2 border-b;
+  @apply bg-gradient-to-r from-slate-50 to-slate-100;
+  @apply dark:from-slate-800 dark:to-slate-900;
+  @apply border-slate-200 dark:border-slate-700;
+  border-top-left-radius: var(--ifm-pre-border-radius);
+  border-top-right-radius: var(--ifm-pre-border-radius);
+}
+
+.codeBlockTitle {
+  @apply flex items-center gap-2 flex-1 min-w-0;
+}
+
+.titleText {
+  @apply text-sm font-medium text-slate-700 dark:text-slate-200;
+  @apply truncate;
+  font-family: var(--ifm-font-family-monospace);
+}
+
+.languageTag {
+  @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium;
+  @apply bg-slate-200 dark:bg-slate-700;
+  @apply text-slate-700 dark:text-slate-300;
+  font-family: var(--ifm-font-family-base);
+}
+
+.codeBlockActions {
+  @apply flex items-center gap-2;
+}
+
+.codeButton {
+  @apply opacity-80 hover:opacity-100 transition-opacity;
+}
+
+/* Code Block Content */
+.codeBlockContent {
+  @apply relative;
+  background-color: var(--prism-background-color);
+}
+
+.codeBlockLines {
+  @apply m-0 p-4;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  background-color: var(--prism-background-color) !important;
+}
+
+.codeBlockLinesWithNumbering {
+  display: table;
+  width: 100%;
+  background-color: transparent !important;
+}
+
+.codeBlockLinesWithNumberingShow {
+  display: table;
+  background-color: transparent !important;
+}
+
+/* Override default styles to remove duplicate title */
+:global(.theme-code-block) {
+  position: relative;
+}
+
+/* Remove the default title display if it exists */
+:global(.prism-code) {
+  counter-reset: line-number;
+}
+
+/* Ensure the container has proper border radius */
+:global(.theme-code-block-highlighted-line) {
+  background-color: var(--docusaurus-highlighted-code-line-bg);
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+}
+
