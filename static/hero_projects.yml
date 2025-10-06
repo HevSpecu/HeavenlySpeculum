@@ -1,0 +1,52 @@
+# Hero projects configuration
+# You can add, remove, or reorder items freely.
+# Fields: id, title, subtitle, description, link, linkLabel
+
+- id: sdnu-chrono-sync
+  title: 时序同笺
+  subtitle: 现代化多用户课表与日程管理
+  description: |
+    SDNUChronoSync (时序同笺) 是一个专为山东师范大学（SDNU）学生设计的课表与日程管理工具。
+    支持从教务系统一键导入课表，并能生成ICS文件以便在多平台日历应用中订阅。
+    项目具备个人资料管理、团队视图以及管理员后台等功能，旨在帮助用户高效地同步与规划学习生活。
+    前端与后端分离的设计，为二次开发和功能扩展提供了便利。
+  link: https://sxty.hxcn.space
+  linkLabel: 开始使用
+
+- id: aiamgine
+  title: Aiamgine
+  subtitle: 高效管理、检索和版本控制AI生成的图片及其元数据
+  description: |
+    智能化的图片管理解决方案，提供版本控制、AI 标签、智能搜索等功能。
+    让您的图片管理更加高效、有序。
+  link: https://aiamgine.hxcn.space
+  linkLabel: 开始使用
+
+- id: github-mirror
+  title: Github加速镜像服务
+  subtitle: gh.hevspecu.hxcn.space
+  description: |
+    为国内开发者提供的高速GitHub开源镜像服务
+    显著提升克隆速度，优化开发体验。
+  link: /docs/intro
+  linkLabel: 了解更多
+
+- id: dockerhub-mirror
+  title: DockerHub加速镜像服务
+  subtitle: docker.hevspecu.hxcn.space
+  description: |
+    为国内开发者提供的高速DockerHub开源镜像服务
+    显著提升拉取速度，优化开发体验。
+  link: /docs/intro
+  linkLabel: 了解更多
+
+- id: gastigado
+  title: Gastigado Fast Image
+  subtitle: 高速图床服务
+  description: |
+    轻量级、高性能的图床解决方案
+    支持多种图片格式、CDN 加速
+    支持API上传、管理和获取图片
+    为您的图片存储和分享提供最佳体验
+  link: https://gastigado.cnies.org
+  linkLabel: 开始使用

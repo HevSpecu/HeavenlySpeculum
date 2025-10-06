@@ -138,7 +138,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 body {
@@ -690,4 +690,176 @@ article {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* ============================================
+   天空之镜落地页样式
+   ============================================ */
+
+/* 100vh section heights for scroll animation */
+.hero-section {
+  min-height: calc(100vh - var(--fd-nav-height));
+  min-height: calc(100dvh - var(--fd-nav-height));
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Canvas background positioning */
+.hev-canvas-container {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+}
+
+.hev-canvas-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Content layer positioning */
+.hev-content {
+  position: relative;
+  z-index: 10;
+  padding-top: var(--fd-nav-height);
+}
+
+.hev-content > * {
+  pointer-events: auto;
+}
+
+/* HevSpecu brand colors */
+:root {
+  --hev-blue: #00A9FF;
+  --hev-deep-blue: #003366;
+  --hev-tech-black: #0A0A0A;
+}
+
+/* Project showcase sections */
+.project-showcase {
+  min-height: calc(100vh - var(--fd-nav-height));
+  min-height: calc(100dvh - var(--fd-nav-height));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  scroll-margin-top: var(--fd-nav-height);
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 3rem;
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='dark'] .project-card {
+  background: rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Hero section specific styles */
+.hero-section .hero-content {
+  height: calc(100vh - var(--fd-nav-height));
+  height: calc(100dvh - var(--fd-nav-height));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  color: white;
+  background: radial-gradient(ellipse at center, rgba(0, 169, 255, 0.1) 0%, rgba(10, 10, 10, 0.9) 100%);
+}
+
+.hero-title {
+  font-size: clamp(3rem, 10vw, 6rem);
+  font-weight: 900;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, var(--hev-blue) 0%, white 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 80px rgba(0, 169, 255, 0.5);
+}
+
+.hero-subtitle {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-weight: 300;
+  margin-bottom: 3rem;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 600px;
+}
+
+/* CTA buttons */
+.cta-buttons {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button-primary {
+  background: var(--hev-blue);
+  color: white;
+  box-shadow: 0 0 30px rgba(0, 169, 255, 0.5);
+}
+
+.cta-button-primary:hover {
+  background: #0095e6;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 40px rgba(0, 169, 255, 0.7);
+}
+
+.cta-button-secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.cta-button-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--hev-blue);
+  transform: translateY(-2px);
+}
+
+/* Smooth scrolling */
+html.lenis {
+  height: auto;
+}
+
+.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis-scrolling iframe {
+  pointer-events: none;
 }

@@ -17,7 +17,7 @@ function HomepageHeader() {
         <div className="flex gap-4 justify-center flex-wrap">
           <Link
             className="bg-fd-primary text-fd-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-fd-accent hover:text-fd-accent-foreground transition-colors no-underline"
-            to="/heavenly-speculum">
+            to="/">
             🌟 天空之镜
           </Link>
           <Link
