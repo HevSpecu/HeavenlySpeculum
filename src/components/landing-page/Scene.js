@@ -242,25 +242,6 @@ export default function Scene() {
 
       {/* Gastigado Image Core */}
       <GastigadoCore position={[0, 60, 40]} />
-
-      {/* Floating Particles */}
-      {[...Array(50)].map((_, i) => (
-        <mesh
-          key={`particle-${i}`}
-          position={[
-            Math.random() * 100 - 50,
-            Math.random() * 100 - 50,
-            Math.random() * 100 - 50
-          ]}
-        >
-          <sphereGeometry args={[0.2, 8, 8]} />
-          <meshStandardMaterial
-            color="#00A9FF"
-            emissive="#00A9FF"
-            emissiveIntensity={Math.random() * 0.5 + 0.5}
-          />
-        </mesh>
-      ))}
     </group>
   );
 }

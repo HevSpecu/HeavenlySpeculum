@@ -251,10 +251,10 @@ const config = {
         {name: 'description', content: '天空之镜 HevSpecu - 提供GitHub加速镜像、DockerHub加速镜像、高速图床服务等优质服务'},
       ],
       navbar: {
-        title: '文档站点',
+        title: '天空之镜',
         logo: {
           alt: 'Logo',
-          src: 'img/logo.svg',
+          src: 'static/favicon.png',
         },
         items: [
           {

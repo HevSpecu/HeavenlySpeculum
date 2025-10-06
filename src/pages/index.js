@@ -11,6 +11,7 @@ export default function Home() {
   const { siteConfig } = useDocusaurusContext();
   const [lenis, setLenis] = useState(null);
   const [heroProjects, setHeroProjects] = useState([]);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const heroYamlUrl = useBaseUrl('/hero_projects.yml');
   const currentYear = new Date().getFullYear();
 
@@ -39,6 +40,19 @@ export default function Home() {
     return () => {
       lenisInstance.destroy();
     };
+  }, []);
+
+  // Mouse position tracking for parallax effect
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePosition({
+        x: (e.clientX / window.innerWidth - 0.5) * 20,
+        y: (e.clientY / window.innerHeight - 0.5) * 20,
+      });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   // Load hero projects from YAML
@@ -123,7 +137,13 @@ export default function Home() {
       <div className="hev-content">
         {/* Hero Section */}
         <section className="hero-section">
-          <div className="hero-content">
+          <div 
+            className="hero-content"
+            style={{
+              transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)`,
+              transition: 'transform 0.3s ease-out',
+            }}
+          >
             <h1 className="hero-title">
             天空之镜
             </h1>
@@ -132,12 +152,12 @@ export default function Home() {
             </p>
             <div className="cta-buttons">
               <Link
-                className="cta-button cta-button-primary"
+                className="cta-button cta-button-primary breathing-button"
                 to="#projects">
                 探索项目
               </Link>
               <Link
-                className="cta-button cta-button-secondary"
+                className="cta-button cta-button-secondary breathing-button"
                 to="/docs/intro">
                 查看文档
               </Link>
@@ -152,56 +172,67 @@ export default function Home() {
             {p?.id && (
               <span id={p.id} style={{ display: 'block', height: 0, overflow: 'hidden', scrollMarginTop: 'var(--fd-nav-height)' }} aria-hidden="true"></span>
             )}
-            <div className="project-card">
-              <h2 style={{ fontSize: '3rem', marginBottom: '1rem', background: 'linear-gradient(135deg, #00A9FF, #003366)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                {p.title}
-              </h2>
-              {p.subtitle && (
-                <p style={{ fontSize: '1.2rem', marginBottom: '2rem', color: 'rgba(255, 255, 255, 0.8)' }}>
-                  {p.subtitle}
-                </p>
-              )}
-              {p.description && (
-                <p style={{ marginBottom: '2rem', lineHeight: 1.8 }}>
-                  {p.description}
-                </p>
-              )}
-              {p.link && (
-                <Link
-                  className="cta-button cta-button-primary"
-                  to={p.link}>
-                  {p.linkLabel || '了解更多'}
-                </Link>
-              )}
+            <div 
+              className="project-card interactive-card"
+              style={{
+                animationDelay: `${idx * 100}ms`,
+              }}
+            >
+              <div className="card-glow"></div>
+              <div className="card-content">
+                <h2 style={{ fontSize: '2.25rem', marginBottom: '1rem', background: 'linear-gradient(135deg, #00A9FF, #003366)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                  {p.title}
+                </h2>
+                {p.subtitle && (
+                  <p style={{ fontSize: '1.2rem', marginBottom: '2rem', color: 'rgba(255, 255, 255, 0.8)' }}>
+                    {p.subtitle}
+                  </p>
+                )}
+                {p.description && (
+                  <p style={{ marginBottom: '2rem', lineHeight: 1.8 }}>
+                    {p.description}
+                  </p>
+                )}
+                {p.link && (
+                  <Link
+                    className="cta-button cta-button-primary breathing-button"
+                    to={p.link}>
+                    {p.linkLabel || '了解更多'}
+                  </Link>
+                )}
+              </div>
             </div>
           </section>
         ))}
 
         {/* Footer Section */}
         <section className="project-showcase">
-          <div className="project-card" style={{ background: 'rgba(0, 0, 0, 0.5)' }}>
-            <h2 style={{ fontSize: '3rem', marginBottom: '2rem', background: 'linear-gradient(135deg, #00A9FF, white)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-              关于我们
-            </h2>
-            <p style={{ fontSize: '1.2rem', marginBottom: '3rem', color: 'rgba(255, 255, 255, 0.8)' }}>
-              在天空之镜，我们相信技术与艺术的完美融合
-            </p>
-            <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Link
-                className="cta-button cta-button-secondary"
-                to="https://github.com/hevspecu"
-                target="_blank">
-                GitHub
-              </Link>
-              <Link
-                className="cta-button cta-button-secondary"
-                to="/about">
-                联系我们
-              </Link>
+          <div className="project-card interactive-card" style={{ background: 'rgba(0, 0, 0, 0.5)' }}>
+            <div className="card-glow"></div>
+            <div className="card-content">
+              <h2 style={{ fontSize: '3rem', marginBottom: '2rem', background: 'linear-gradient(135deg, #00A9FF, white)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                关于我们
+              </h2>
+              <p style={{ fontSize: '1.2rem', marginBottom: '3rem', color: 'rgba(255, 255, 255, 0.8)' }}>
+                在天空之镜，我们相信技术与艺术的完美融合
+              </p>
+              <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                <Link
+                  className="cta-button cta-button-secondary breathing-button"
+                  to="https://github.com/hevspecu"
+                  target="_blank">
+                  GitHub
+                </Link>
+                <Link
+                  className="cta-button cta-button-secondary breathing-button"
+                  to="/about">
+                  联系我们
+                </Link>
+              </div>
+              <p style={{ marginTop: '3rem', fontSize: '0.9rem', color: 'rgba(255, 255, 255, 0.5)' }}>
+                © {currentYear} <a href="https://hevspecu.hxc.space" target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>HevSpecu(天空之镜)</a>. All rights reserved.
+              </p>
             </div>
-            <p style={{ marginTop: '3rem', fontSize: '0.9rem', color: 'rgba(255, 255, 255, 0.5)' }}>
-              © {currentYear} <a href="https://hevspecu.hxc.space" target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>HevSpecu(天空之镜)</a>. All rights reserved.
-            </p>
           </div>
         </section>
       </div>
@@ -237,6 +268,103 @@ export default function Home() {
       </div>
 
       <style>{`
+        /* Breathing button effect */
+        .breathing-button {
+          animation: breathe 3s ease-in-out infinite;
+          transition: all 0.3s ease;
+        }
+
+        .breathing-button:hover {
+          transform: translateY(-3px) scale(1.05);
+          box-shadow: 
+            0 0 30px rgba(0, 191, 255, 0.8),
+            0 0 60px rgba(0, 246, 255, 0.5);
+        }
+
+        @keyframes breathe {
+          0%, 100% {
+            box-shadow: 
+              0 0 20px rgba(0, 191, 255, 0.5),
+              0 0 40px rgba(0, 246, 255, 0.3);
+          }
+          50% {
+            box-shadow: 
+              0 0 30px rgba(0, 191, 255, 0.7),
+              0 0 60px rgba(0, 246, 255, 0.5);
+          }
+        }
+
+        /* Interactive card effects */
+        .interactive-card {
+          position: relative;
+          animation: slideUp 0.6s ease-out forwards;
+          opacity: 0;
+          transition: all 0.4s ease;
+          overflow: hidden;
+        }
+
+        @keyframes slideUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .interactive-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, 
+            transparent, 
+            rgba(0, 246, 255, 0.1), 
+            transparent);
+          transition: left 0.5s;
+          z-index: 1;
+        }
+
+        .interactive-card:hover::before {
+          left: 100%;
+        }
+
+        .interactive-card:hover {
+          transform: translateY(-8px);
+          box-shadow: 
+            0 10px 40px rgba(0, 191, 255, 0.3),
+            0 0 60px rgba(0, 246, 255, 0.2);
+          border-color: rgba(0, 191, 255, 0.6);
+        }
+
+        .card-glow {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 0;
+          height: 0;
+          background: radial-gradient(circle, rgba(0, 191, 255, 0.2) 0%, transparent 70%);
+          border-radius: 50%;
+          transition: all 0.4s ease;
+          pointer-events: none;
+          z-index: 0;
+        }
+
+        .interactive-card:hover .card-glow {
+          width: 400px;
+          height: 400px;
+        }
+
+        .card-content {
+          position: relative;
+          z-index: 2;
+        }
+
         @keyframes scroll {
           0% {
             transform: translateX(-50%) translateY(0);

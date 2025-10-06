@@ -50,6 +50,27 @@
   text-decoration: none !important;
 }
 
+/* 移除所有按钮的下划线 */
+.cta-button,
+.cta-button:hover,
+.cta-button:active,
+.cta-button:focus,
+.cta-button:visited,
+.cta-button-primary,
+.cta-button-primary:hover,
+.cta-button-primary:active,
+.cta-button-primary:focus,
+.cta-button-secondary,
+.cta-button-secondary:hover,
+.cta-button-secondary:active,
+.cta-button-secondary:focus,
+.breathing-button,
+.breathing-button:hover,
+.breathing-button:active,
+.breathing-button:focus {
+  text-decoration: none !important;
+}
+
 /* ============================================
    Fumadocs CSS 变量定义
    ============================================ */
@@ -889,4 +910,33 @@ html.lenis {
 
 .lenis-scrolling iframe {
   pointer-events: none;
+}
+
+/* ============================================
+   Projects Page Styles - 项目页面样式
+   ============================================ */
+
+/* 确保所有项目按钮在任何状态下都没有下划线 */
+.projects-page a,
+.projects-page a:hover,
+.projects-page a:active,
+.projects-page a:focus,
+.projects-page a:visited,
+.projects-page button,
+.projects-page button:hover,
+.projects-page button:active,
+.projects-page button:focus {
+  text-decoration: none !important;
+}
+
+/* 项目卡片按钮样式优化 */
+.project-card-button {
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+.project-card-button:hover,
+.project-card-button:focus,
+.project-card-button:active {
+  text-decoration: none !important;
 }

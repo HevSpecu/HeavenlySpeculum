@@ -1,0 +1,126 @@
+// Projects configuration
+// You can add, remove, or reorder items freely.
+// Fields: id, title, subtitle, description, icon (emoji or svg path), tags, buttons
+// Buttons: label, link, style (primary or secondary)
+
+const projects = [
+  {
+    id: 'sky-mirror',
+    title: '天空之镜',
+    subtitle: '极具未来感的文档站点',
+    description: '极具未来感和科技感的文档站点，映照科技未来，连接创新世界。采用 Fumadocs 设计系统，提供优雅的阅读体验和强大的功能。',
+    icon: '🌟',
+    // icon: '/img/projects/sky-mirror.svg',  // 也可以使用SVG路径
+    tags: ['React', '前端', 'Docusaurus'],
+    buttons: [
+      {
+        label: '访问首页',
+        link: '/',
+        style: 'primary',
+      },
+      {
+        label: '查看文档',
+        link: '/docs/intro',
+        style: 'secondary',
+      },
+    ],
+  },
+  {
+    id: 'aiamgine',
+    title: 'Aiamgine',
+    subtitle: '智能图像处理平台',
+    description: '基于先进神经网络的智能图像处理平台，提供强大的图像识别、增强和生成能力。高效管理、检索和版本控制AI生成的图片及其元数据。',
+    icon: '🧠',
+    tags: ['AI', '图像处理', 'Python'],
+    buttons: [
+      {
+        label: '开始使用',
+        link: 'https://aiamgine.hxcn.space',
+        style: 'primary',
+      },
+      {
+        label: 'GitHub',
+        link: 'https://github.com/HevSpecu/Aiamgine',
+        style: 'secondary',
+      },
+      {
+        label: '文档',
+        link: '/docs/aiamgine',
+        style: 'secondary',
+      },
+    ],
+  },
+  {
+    id: 'sdnu-chrono-sync',
+    title: '时序同笺',
+    subtitle: '现代化多用户课表与日程管理',
+    description: 'SDNUChronoSync (时序同笺) 是一个专为山东师范大学（SDNU）学生设计的课表与日程管理工具。支持从教务系统一键导入课表，并能生成ICS文件以便在多平台日历应用中订阅。',
+    icon: '📅',
+    tags: ['课程表', '日历', 'TypeScript'],
+    buttons: [
+      {
+        label: '开始使用',
+        link: 'https://sxty.hxcn.space',
+        style: 'primary',
+      },
+      {
+        label: 'GitHub',
+        link: 'https://github.com/HevSpecu/SDNUChronoSync',
+        style: 'secondary',
+      },
+    ],
+  },
+  {
+    id: 'github-mirror',
+    title: 'GitHub 加速镜像',
+    subtitle: 'gh.hevspecu.hxcn.space',
+    description: '高速稳定的 GitHub 镜像服务，为国内开发者提供极速的代码克隆和下载体验。显著提升克隆速度，优化开发体验。',
+    icon: '🐙',
+    tags: ['镜像', 'Git', '加速'],
+    buttons: [
+      {
+        label: '了解更多',
+        link: '/docs/intro',
+        style: 'primary',
+      },
+    ],
+  },
+  {
+    id: 'dockerhub-mirror',
+    title: 'DockerHub 加速镜像',
+    subtitle: 'docker.hevspecu.hxcn.space',
+    description: '企业级 Docker 镜像加速服务，为国内开发者提供的高速DockerHub开源镜像服务。大幅提升容器镜像的拉取速度和稳定性。',
+    icon: '🐳',
+    tags: ['容器', '镜像', 'DevOps'],
+    buttons: [
+      {
+        label: '了解更多',
+        link: '/docs/intro',
+        style: 'primary',
+      },
+    ],
+  },
+  {
+    id: 'gastigado',
+    title: 'Gastigado Fast Image',
+    subtitle: '高速图床服务',
+    description: '轻量级、高性能的图床解决方案，支持多种图片格式、CDN 加速。支持API上传、管理和获取图片，为您的图片存储和分享提供最佳体验。',
+    icon: '⚡',
+    tags: ['图像', 'CDN', 'Web'],
+    buttons: [
+      {
+        label: '开始使用',
+        link: 'https://gastigado.cnies.org',
+        style: 'primary',
+      },
+      {
+        label: 'GitHub',
+        link: 'https://github.com/HevSpecu',
+        style: 'secondary',
+      },
+    ],
+  },
+];
+
+export default projects;
+
