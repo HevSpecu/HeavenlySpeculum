@@ -23,8 +23,8 @@
       link: /docs/intro
       style: secondary
 
-- id: aiamgine
-  title: Aiamgine
+- id: aimagine
+  title: AImagine
   subtitle: 智能图像处理平台
   description: |
     基于先进神经网络的智能图像处理平台，提供强大的图像识别、增强和生成能力。
@@ -36,10 +36,10 @@
     - Python
   buttons:
     - label: 开始使用
-      link: https://aiamgine.hxcn.space
+      link: https://aimagine.hxcn.space
       style: primary
     - label: GitHub
-      link: https://github.com/HevSpecu/Aiamgine
+      link: https://github.com/HevSpecu/AImagine
       style: secondary
 
 - id: sdnu-chrono-sync
