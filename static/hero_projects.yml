@@ -13,13 +13,13 @@
   link: https://sxty.hxcn.space
   linkLabel: 开始使用
 
-- id: aiamgine
-  title: Aiamgine
+- id: aimagine
+  title: AImagine
   subtitle: 高效管理、检索和版本控制AI生成的图片及其元数据
   description: |
     智能化的图片管理解决方案，提供版本控制、AI 标签、智能搜索等功能。
     让您的图片管理更加高效、有序。
-  link: https://aiamgine.hxcn.space
+  link: https://aimagine.hxcn.space
   linkLabel: 开始使用
 
 - id: github-mirror
