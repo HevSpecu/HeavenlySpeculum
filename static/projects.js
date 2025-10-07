@@ -43,11 +43,6 @@ const projects = [
         link: 'https://github.com/HevSpecu/Aiamgine',
         style: 'secondary',
       },
-      {
-        label: '文档',
-        link: '/docs/aiamgine',
-        style: 'secondary',
-      },
     ],
   },
   {
