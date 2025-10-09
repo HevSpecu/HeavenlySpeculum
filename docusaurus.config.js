@@ -80,12 +80,11 @@ const config = {
         property: 'og:description',
         content: '提供GitHub加速镜像、DockerHub加速镜像、高速图床服务Gastigado、智能图片管理工具Aiamgine等优质服务，为开发者提供高效便捷的技术解决方案。',
       },
-    },
-    {
+    },    {
       tagName: 'meta',
       attributes: {
         property: 'og:image',
-        content: 'https://hevspecu.hxcn.space/favicon.png',
+        content: 'https://gastigado.cnies.org/d/Specu/HevSpecu_Project.jpg',
       },
     },
     {
@@ -130,12 +129,11 @@ const config = {
         property: 'twitter:description',
         content: '提供GitHub加速镜像、DockerHub加速镜像、高速图床服务Gastigado、智能图片管理工具Aiamgine等优质服务。',
       },
-    },
-    {
+    },    {
       tagName: 'meta',
       attributes: {
         property: 'twitter:image',
-        content: 'https://hevspecu.hxcn.space/favicon.png',
+        content: 'https://gastigado.cnies.org/d/Specu/HevSpecu_Project.jpg',
       },
     },
     // 中国社交媒体分享优化
@@ -153,12 +151,11 @@ const config = {
         itemprop: 'description',
         content: '提供GitHub加速镜像、DockerHub加速镜像、高速图床服务Gastigado、智能图片管理工具Aiamgine等优质服务。',
       },
-    },
-    {
+    },    {
       tagName: 'meta',
       attributes: {
         itemprop: 'image',
-        content: 'https://hevspecu.hxcn.space/favicon.png',
+        content: 'https://gastigado.cnies.org/d/Specu/HevSpecu_Project.jpg',
       },
     },
     // 微博分享
@@ -175,12 +172,45 @@ const config = {
         property: 'weibo:description',
         content: '提供GitHub加速镜像、DockerHub加速镜像、高速图床服务等优质服务。',
       },
-    },
-    {
+    },    {
       tagName: 'meta',
       attributes: {
         property: 'weibo:image',
-        content: 'https://hevspecu.hxcn.space/favicon.png',
+        content: 'https://gastigado.cnies.org/d/Specu/HevSpecu_Project.jpg',
+      },
+    },    // Favicon links
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: 'https://gastigado.cnies.org/d/Specu/HevSpecu_Project.jpg',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        href: 'https://gastigado.cnies.org/d/Specu/HevSpecu_Project.jpg',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        href: 'https://gastigado.cnies.org/d/Specu/HevSpecu_Project.jpg',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'apple-touch-icon',
+        sizes: '180x180',
+        href: 'https://gastigado.cnies.org/d/Specu/HevSpecu_Project.jpg',
       },
     },
     // Canonical URL
@@ -240,12 +270,10 @@ const config = {
         },
       };
     },
-  ],
-
-  themeConfig:
+  ],      themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      image: 'favicon.png',
+      image: 'https://gastigado.cnies.org/d/Specu/HevSpecu_Project.jpg',
       metadata: [
         {name: 'keywords', content: '天空之镜,HevSpecu,GitHub镜像,DockerHub镜像,加速服务,图床,Gastigado,Aiamgine,时序同笺,SDNUChronoSync'},
         {name: 'description', content: '天空之镜 HevSpecu - 提供GitHub加速镜像、DockerHub加速镜像、高速图床服务等优质服务'},
@@ -254,7 +282,7 @@ const config = {
         title: '天空之镜',
         logo: {
           alt: 'Logo',
-          src: 'static/favicon.png',
+          src: 'https://gastigado.cnies.org/d/Specu/HevSpecu_Project.jpg',
         },
         items: [
           {
