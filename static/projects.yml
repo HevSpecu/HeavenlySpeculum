@@ -112,3 +112,35 @@
       link: https://github.com/HevSpecu
       style: secondary
 
+- id: resume
+  title: 及时简历
+  subtitle: 一个独一无二的简历生成器，让您的隐私铭记在心。完全安全，可定制，便携，开源和永久免费。今天就试试吧！
+  icon: 📄
+  tags:
+    - 简历
+    - 工具
+    - 开源
+  buttons:
+    - label: 开始使用
+      link: https://resume.hxcn.space
+      style: primary
+  
+- id: typewords
+  title: TypeWords 单词背诵
+  subtitle: 练习英语，一次敲击，一点进步；Practice English, one strike, one step forward
+  description: |
+    TypeWords 是一个用于英语单词背诵的练习工具。
+    通过打字练习，帮助用户记忆和巩固英语单词。
+    支持自定义单词列表、练习模式、统计分析等功能。
+  icon: ⌨️
+  tags:
+    - 英语
+    - 教育
+    - 练习
+  buttons:
+    - label: 开始使用
+      link: https://typewords.hxcn.space
+      style: primary
+    - label: GitHub
+      link: https://github.com/HevSpecu/TypeWords
+      style: secondary

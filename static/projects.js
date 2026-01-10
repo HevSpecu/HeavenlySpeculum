@@ -26,8 +26,8 @@ const projects = [
     ],
   },
   {
-    id: 'aiamgine',
-    title: 'Aiamgine',
+    id: 'aimagine',
+    title: 'AImagine',
     subtitle: '智能图像处理平台',
     description: '基于先进神经网络的智能图像处理平台，提供强大的图像识别、增强和生成能力。高效管理、检索和版本控制AI生成的图片及其元数据。',
     icon: '🧠',
@@ -35,12 +35,12 @@ const projects = [
     buttons: [
       {
         label: '开始使用',
-        link: 'https://aiamgine.hxcn.space',
+        link: 'https://aimagine.hxcn.space',
         style: 'primary',
       },
       {
         label: 'GitHub',
-        link: 'https://github.com/HevSpecu/Aiamgine',
+        link: 'https://github.com/HevSpecu/AImagine',
         style: 'secondary',
       },
     ],
@@ -112,6 +112,41 @@ const projects = [
         label: 'GitHub',
         link: 'https://github.com/HevSpecu',
         style: 'secondary',
+      },
+    ],
+  },
+  {
+    id: 'typewords',
+    title: 'TypeWords 单词背诵',
+    subtitle: '练习英语，一次敲击，一点进步；Practice English, one strike, one step forward',
+    description: 'TypeWords 是一个用于英语单词背诵的练习工具。通过打字练习，帮助用户记忆和巩固英语单词。支持自定义单词列表、练习模式、统计分析等功能。',
+    icon: '⌨️',
+    tags: ['英语', '教育', '练习'],
+    buttons: [
+      {
+        label: '开始使用',
+        link: 'https://typewords.hxcn.space',
+        style: 'primary',
+      },
+      {
+        label: 'GitHub',
+        link: 'https://github.com/HevSpecu/TypeWords',
+        style: 'secondary',
+      },
+    ],
+  },
+  {
+    id: 'resume',
+    title: '及时简历',
+    subtitle: '一个独一无二的简历生成器，让您的隐私铭记在心。完全安全，可定制，便携，开源和永久免费。今天就试试吧！',
+    description: 'Reactive Resume 是一个免费且开源的简历制作工具，它简化了简历的创建、更新和共享流程。该平台完全不收集用户信息，也不进行任何形式的广告推送，因此用户的隐私得到了最高程度的保护。界面极其用户友好。',
+    icon: '📄',
+    tags: ['简历', '工具', '开源'],
+    buttons: [
+      {
+        label: '开始使用',
+        link: 'https://resume.hxcn.space',
+        style: 'primary',
       },
     ],
   },
