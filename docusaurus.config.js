@@ -238,14 +238,14 @@ const config = {
       },
     },
     // Analytics tracking script
-    {
-      tagName: 'script',
-      attributes: {
-        defer: true,
-        src: 'https://analytics.hxcn.dev/script.js',
-        'data-website-id': '6139e9bf-ca71-41f6-839f-2241932962af',
-      },
-    },
+	    {
+	      tagName: 'script',
+	      attributes: {
+	        defer: 'true',
+	        src: 'https://analytics.hxcn.dev/script.js',
+	        'data-website-id': '6139e9bf-ca71-41f6-839f-2241932962af',
+	      },
+	    },
   ],
 
   presets: [
