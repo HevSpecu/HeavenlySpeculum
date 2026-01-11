@@ -5,7 +5,10 @@
 const config = {
   title: '天空之镜 HevSpecu',
   tagline: '天空之镜 - 提供高速镜像服务、智能工具与技术资源',
-  favicon: 'favicon.png',
+  favicon: 'img/favicon.svg',
+  customFields: {
+    buildYear: new Date().getFullYear(),
+  },
 
   // Set the production url of your site here
   url: 'https://hevspecu.hxcn.space',

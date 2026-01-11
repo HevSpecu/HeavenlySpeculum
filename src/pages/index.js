@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Link from '@docusaurus/Link';
+import BrowserOnly from '@docusaurus/BrowserOnly';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import Background from '@site/src/components/landing-page/Background';
@@ -13,7 +14,7 @@ export default function Home() {
   const [heroProjects, setHeroProjects] = useState([]);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const heroYamlUrl = useBaseUrl('/hero_projects.yml');
-  const currentYear = new Date().getFullYear();
+  const buildYear = siteConfig?.customFields?.buildYear ?? '';
 
   // Initialize smooth scrolling
   useEffect(() => {
@@ -131,7 +132,9 @@ export default function Home() {
       description="天空之镜 HevSpecu - 提供GitHub加速镜像、DockerHub加速镜像、高速图床服务Gastigado、智能图片管理工具Aiamgine、时序同笺课表管理等优质服务，为开发者提供高效便捷的技术解决方案。">
 
       {/* 3D Background */}
-      <Background />
+      <BrowserOnly fallback={<div className="hev-canvas-container" />}>
+        {() => <Background />}
+      </BrowserOnly>
 
       {/* Content Layers */}
       <div className="hev-content">
@@ -165,9 +168,15 @@ export default function Home() {
           </div>
         </section>
 
+        <span
+          id="projects"
+          style={{ display: 'block', height: 0, overflow: 'hidden', scrollMarginTop: 'var(--fd-nav-height)' }}
+          aria-hidden="true"
+        ></span>
+
         {/* Projects Section (YAML-driven) */}
         {heroProjects.map((p, idx) => (
-          <section key={p.id || idx} id={idx === 0 ? 'projects' : undefined} className="project-showcase">
+          <section key={p.id || idx} className="project-showcase">
             {/* Per-project anchor to support #<id> links while preserving #projects on the first section */}
             {p?.id && (
               <span id={p.id} style={{ display: 'block', height: 0, overflow: 'hidden', scrollMarginTop: 'var(--fd-nav-height)' }} aria-hidden="true"></span>
@@ -230,7 +239,8 @@ export default function Home() {
                 </Link>
               </div>
               <p style={{ marginTop: '3rem', fontSize: '0.9rem', color: 'rgba(255, 255, 255, 0.5)' }}>
-                © {currentYear} <a href="https://hevspecu.hxc.space" target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>HevSpecu(天空之镜)</a>. All rights reserved.
+                © <BrowserOnly fallback={buildYear}>{() => new Date().getFullYear()}</BrowserOnly>{' '}
+                <a href="https://hevspecu.hxc.space" target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>HevSpecu(天空之镜)</a>. All rights reserved.
               </p>
             </div>
           </div>
